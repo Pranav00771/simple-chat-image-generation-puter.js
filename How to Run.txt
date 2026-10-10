@@ -1,0 +1,4 @@
+1) Click on "Claude Chat Start.bat"
+2) Open web browser type localhost:portno/Claude Chat.html
+3) Sign In to Puter.js
+4) Enter prompt text and get answere
