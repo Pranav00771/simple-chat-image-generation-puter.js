@@ -1,0 +1,125 @@
+<html>
+<style>
+.body1{
+  background:linear-gradient(rgb(100, 100, 100), rgb(190, 190, 190));
+}
+.top_text1{
+   font-family:"Segoe UI";
+   font-size:29px;
+   color:rgb(245, 245, 245);
+   position:absolute;
+   left:40%;
+   top:5%;
+ }
+.top_image1{
+   position:absolute;
+   left:20%;
+   top:5%;
+   width:100px;
+   height:100px;
+}
+.ques_edit1{
+   position:absolute;
+   left:30%;
+   top:20%;
+   width:700px;
+   height:100px;
+   background:rgb(29, 29, 29);
+   color:rgb(245, 245, 245);
+   border-radius:12px;
+}
+.ques_edit2{
+   position:absolute;
+   left:30%;
+   top:45%;
+   width:700px;
+   height:300px;
+   background:rgb(29, 29, 29);
+   color:rgb(245, 245, 245);
+   border-radius:12px;
+   overflow-y:scroll;
+   visibility:visible;
+}
+.img2{
+  position:absolute;
+   left:30%;
+   top:45%;
+   width:600px;
+   height:300px;
+   background:rgb(29, 29, 29);
+   visibility:hidden;
+}
+.button_image1{
+   position:absolute;
+   left:85%;
+   top:20%;
+   cursor:pointer;
+}
+#combo_id{
+   position:absolute;
+   left:40%;
+   top:37%;
+   background:rgb(19, 19, 19);
+   color:rgb(255, 255, 255);
+}
+.created_b{
+  position:absolute;
+  left:45%;
+  top:95%;
+  color:rgb(245, 245, 245);
+  background:rgb(19, 19, 19);
+  cursor:pointer;
+  font-family:arial;
+  font-size:12px;
+}
+</style>
+<script src="https://js.puter.com/v2/"></script>
+<script>
+function click_by(){
+  window.open("https://github.com/Pranav00771");
+}
+async function click_3(){
+ const select_id = document.getElementById("combo_id");
+  if(select_id.value=="Normal"){
+  const prompt_text=document.getElementById("edit1").value;
+  const res=await puter.ai.chat(prompt_text);
+  document.getElementById("edit2").value=res;    
+}
+ else if(select_id.value=="Image"){
+          const prompt_text=document.getElementById("edit1").value;
+          const res= await puter.ai.txt2img(prompt_text);
+          res.width="600";
+          res.height="300";
+          const ele=document.getElementById("img_1");
+          ele.appendChild(res);
+}
+}
+function select_c(e){
+   const selected_v = e.value;
+  if(selected_v=="Normal"){
+      document.getElementById("img_1").style="visibility:hidden;";
+      document.getElementById("vid_1").style="visibility:hidden;";
+      document.getElementById("edit2").style="visibility:visible;";
+ }
+ else if(selected_v=="Image")
+  {
+   document.getElementById("img_1").style="visibility:visible;";
+      document.getElementById("edit2").style="visibility:hidden;";
+      document.getElementById("vid_1").style="visibility:hidden;";
+ }   
+  } 
+</script>
+<body class="body1">
+<h4 class="top_text1">Claude Chat</h4>
+<img src="logo.png" class="top_image1"></img>
+<textarea class="ques_edit1" id="edit1" placeholder="Ask Anything"></textarea>
+<select id="combo_id" onchange="select_c(this)">
+<option value="Normal">Normal</option>
+<option value="Image">Image</option>
+</select>
+<textarea id="edit2" class="ques_edit2" id="edit2" ></textarea>
+<div class="img2" id="img_1"></div>
+<button class="button_image1" onclick="click_3()">Submit</button>
+<p class="created_b" onclick="click_by()">Developed By Pranav</p>
+</body>
+</html>
